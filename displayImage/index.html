@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .image-list {
+            padding: 20px;
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            padding-top: 50px; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-height: 800px;
+            height: 90%;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="images">
+    </div>
+    <script >
+        var showImage = document.createElement('IMG')
+        const filePath = './images'
+        const images = document.getElementById("images")
+        const displayImage = document.createElement('DIV')
+        displayImage.className = 'modal'
+        const imageList = [ '1.jfif', '2.jfif', '3.jfif' ]
+        imageList.forEach((file,index) => {
+            var image = document.createElement('IMG')
+            image.className='image-list'
+            imageSrc = filePath+'/'+file
+            image.src = imageSrc
+            image.clientHeight = 'auto'
+            image.clientWidth = '500px'
+            image.onload = () => {
+                images.appendChild(image)
+            }
+            image.onclick = () => {
+                showImage.src = image.src
+                showImage.className = 'modal-content'
+                displayImage.style.display = 'block'
+                displayImage.appendChild(showImage)
+                images.appendChild(displayImage)
+                showImage.onclick = () => {
+                    displayImage.style.display = 'none'
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
+
