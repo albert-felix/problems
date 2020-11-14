@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-iris = pd.read_csv('C:/Users/ALK/Documents/aleo/IEEE/data/iris.data')
+iris = pd.read_csv('/iris.data')
 df = pd.DataFrame(iris)
 pd.set_option('display.max_rows',None)
 
